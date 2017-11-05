@@ -27,7 +27,8 @@ namespace Lab10Alt
             while (true)
             {
                 Console.WriteLine("________________________________________________________________");
-                Console.WriteLine("|Condition   Make        Model     Year   Price        Miles   |");
+                Console.WriteLine("|Condition  |Make       |Model    |Year  |Price       |Miles   |");
+                Console.WriteLine("|==============================================================|");
                 int c = 0;
                 foreach (Car car in Cars)
                 {
@@ -40,10 +41,16 @@ namespace Lab10Alt
                 Console.Write("Enter the number for the vehicle that you would like to purchase: ");
 
                 userInput = Validator.InputValidator(Cars.Count) - 1;
-                Console.WriteLine($"\n\t\tYou have selected\n<<|>>|{Cars[userInput]}\n");
+                Console.WriteLine("\n\t\t\tYou have selected");
+                Console.WriteLine("________________________________________________________________");
+                Console.WriteLine("|Condition   Make        Model     Year   Price        Miles   |");
+                Console.WriteLine("|==============================================================|");
+                Console.WriteLine($"<<|>>|{Cars[userInput]}\n");
+               
+
                 string x = "ok";
                 Console.WriteLine(Confirm(x));
-                if (x != "ok")
+                if (x == "ok")
                 {
                     continue;
                 }
