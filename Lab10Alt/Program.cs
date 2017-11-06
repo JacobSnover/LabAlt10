@@ -24,6 +24,7 @@ namespace Lab10Alt
             Cars.Add(new UsedCar("VW       ", "Bus    ", 1965, 2_000, 189_000));
             Cars.Add(new UsedCar("Pontiac  ", "Vibe   ", 2003, 1_500, 189_000));
             Cars.Add(new UsedCar("Ford     ", "Mustang", 1989, 3_500, 120_000));
+            
             Console.WriteLine(Validator.Continue());
             while (true)
             {
@@ -37,6 +38,7 @@ namespace Lab10Alt
                     Console.WriteLine("|==============================================================|");
 
                 }
+                
                 Console.Write("Enter the number for the vehicle that you would like to purchase: ");
 
                 userInput = Validator.InputValidator(Cars.Count) - 1;
@@ -53,18 +55,35 @@ namespace Lab10Alt
                 
                 Receipt.Insert(0, Cars[userInput]);
                 Cars.RemoveAt(userInput);
+                
                 Console.WriteLine("\n\t\tYour current purchases are.\n");
                 Header();
                 int x = 0;
                 foreach (Object buys in Receipt)
                 {
                     x++;
-
+                    
                     Console.WriteLine($"|>{x}. |" + buys);
                 }
-                Console.WriteLine(Validator.Continue());
+                if (Cars.Count <= 0)
+                {
+                    Console.WriteLine("\n\t   There is no more vehicles in stock. ");
+                    Console.WriteLine("\n\t\tYour current purchases are.\n");
+                    Header();
+                    int d = 0;
+                    foreach (Object buys in Receipt)
+                    {
+                        d++;
 
-            }
+                        Console.WriteLine($"|>{d}. |" + buys);
+                    }
+                    Console.WriteLine($"\n\t\t\tBye! ");
+                    Console.ReadLine();
+                    Environment.Exit(1);
+                }
+                Console.WriteLine(Validator.Continue());
+                
+    }
 
         }
 

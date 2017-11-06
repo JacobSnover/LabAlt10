@@ -24,7 +24,7 @@ namespace Lab10Alt
                     userInput = int.Parse(input);
                     if (userInput <= x - x || userInput > x)
                     {
-                        Console.Write("That entry is not valid:\nPlease make another selection: ");
+                        Console.Write("\nThat entry is not valid! Please make another selection: ");
                         input = Console.ReadLine();
                         continue;
                     }
@@ -38,7 +38,7 @@ namespace Lab10Alt
                 }
                 catch (Exception e)
                 {
-                    Console.Write("That entry is not valid:\nPlease make another selection: ");
+                    Console.Write("\nThat entry is not valid! Please make another selection: ");
                     input = Console.ReadLine();
                     continue;
                 }
@@ -82,6 +82,7 @@ namespace Lab10Alt
                 }
                 else if (test == "n" || test == "no")
                 {
+                    
                     Console.WriteLine($"Bye! ");
                     Console.ReadLine();
                     Environment.Exit(1);
