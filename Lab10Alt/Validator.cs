@@ -45,5 +45,48 @@ namespace Lab10Alt
                 return userInput;
             }
         }
+        public static string Confirm()
+        {
+
+            while (true)
+            {
+
+                Console.Write("\n\tWould you like to by this vehicle? Y or N ");
+                string test = Console.ReadLine().ToLower();
+
+                if (test == "y" || test == "yes")
+                {
+                    return "ok";
+                }
+                else if (test == "n" || test == "no")
+                {
+                    Continue();
+                    return "NotOk";
+                }
+
+            }
+
+        }
+
+        public static string Continue()
+        {
+
+            while (true)
+            {
+                Console.Write("\n\tWould you like to purchase a vehicle? Y or N ");
+                string test = Console.ReadLine().ToLower();
+
+                if (test == "y" || test == "yes")
+                {
+                    return "\n\tExcellent! Let me show you what we have in stock.";
+                }
+                else if (test == "n" || test == "no")
+                {
+                    Console.WriteLine($"Bye! ");
+                    Console.ReadLine();
+                    Environment.Exit(1);
+                }
+            }
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace Lab10Alt
             int userInput = 0;
 
             ArrayList Cars = new ArrayList();
+            ArrayList Receipt = new ArrayList();
 
             Cars.Add(new Car("Pontiac  ", "Aztec  ", 1999, 21_000));
             Cars.Add(new Car("Chevrolet", "Camaro ", 2012, 35_000));
@@ -23,12 +24,10 @@ namespace Lab10Alt
             Cars.Add(new UsedCar("VW       ", "Bus    ", 1965, 2_000, 189_000));
             Cars.Add(new UsedCar("Pontiac  ", "Vibe   ", 2003, 1_500, 189_000));
             Cars.Add(new UsedCar("Ford     ", "Mustang", 1989, 3_500, 120_000));
-            Console.WriteLine(Continue());
+            Console.WriteLine(Validator.Continue());
             while (true)
             {
-                Console.WriteLine("________________________________________________________________");
-                Console.WriteLine("|Condition  |Make       |Model    |Year  |Price       |Miles   |");
-                Console.WriteLine("|==============================================================|");
+                Header();
                 int c = 0;
                 foreach (Car car in Cars)
                 {
@@ -42,66 +41,38 @@ namespace Lab10Alt
 
                 userInput = Validator.InputValidator(Cars.Count) - 1;
                 Console.WriteLine("\n\t\t\tYou have selected");
-                Console.WriteLine("________________________________________________________________");
-                Console.WriteLine("|Condition   Make        Model     Year   Price        Miles   |");
-                Console.WriteLine("|==============================================================|");
+                Header();
                 Console.WriteLine($"<<|>>|{Cars[userInput]}\n");
-               
 
-                string x = "ok";
-                Console.WriteLine(Confirm(x));
-                if (x == "ok")
+
+                string confirm = Validator.Confirm();
+                if (confirm == "NotOk")
                 {
                     continue;
                 }
-                Console.WriteLine($"\t\tYou have purchased\n<<|>>|{Cars[userInput]}\n");
+                
+                Receipt.Insert(0, Cars[userInput]);
                 Cars.RemoveAt(userInput);
-                Console.WriteLine(Continue());
+                Console.WriteLine("\n\t\tYour current purchases are.\n");
+                Header();
+                int x = 0;
+                foreach (Object buys in Receipt)
+                {
+                    x++;
+
+                    Console.WriteLine($"|>{x}. |" + buys);
+                }
+                Console.WriteLine(Validator.Continue());
 
             }
 
         }
-        public static string Confirm(string x)
+
+        private static void Header()
         {
-
-            while (true)
-            {
-
-                Console.Write("Would you like to by this vehicle? Y or N ");
-                string test = Console.ReadLine().ToLower();
-
-                if (test == "y" || test == "yes")
-                {
-                    return "\t\t   Thank you!!";
-                }
-                else if (test == "n" || test == "no")
-                {
-                    Continue();
-                    return "ok";
-                }
-
-            }
-
-        }
-        public static string Continue()
-        {
-
-            while (true)
-            {
-                Console.Write("Would you like to purchase a vehicle? Y or N ");
-                string test = Console.ReadLine().ToLower();
-
-                if (test == "y" || test == "yes")
-                {
-                    return "ok";
-                }
-                else if (test == "n" || test == "no")
-                {
-                    Console.WriteLine($"Bye! ");
-                    Console.ReadLine();
-                    Environment.Exit(1);
-                }
-            }
+            Console.WriteLine("________________________________________________________________");
+            Console.WriteLine("|Condition  |Make       |Model    |Year  |Price       |Miles   |");
+            Console.WriteLine("|==============================================================|");
         }
     }
 }
